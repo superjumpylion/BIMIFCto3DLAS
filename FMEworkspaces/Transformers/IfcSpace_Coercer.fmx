@@ -1,0 +1,292 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN IfcSpace_Coercer,1,3D,f78e71d7-90b8-4201-b65e-94212770d8f5,"Linked by Default",No,NO_PARALLELISM,,No,21313,YES,No,,No,
+# <h1>IfcSpace_Coercer</h1>
+# <h3>Goal</h3>
+# <p>Extract and coerce geometry. Created for IFC files.</p>
+# <h3>Input</h3>
+# <p>IfcSpace entity from IFC.
+# Reads Body and Box geometries (this can be changed inside the GeometryPartExtractor).</p>
+# <p>Parameter: Geometry output. Default fme_composite_surface.</p>
+# <h3>Output</h3>
+# <p>IfcSpace as extracted geometry.</p>
+# TRANSFORMER_END
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="3D"
+#!   DESCRIPTION="&lt;h1&gt;IfcSpace_Coercer&lt;/h1&gt;&#10;&lt;h3&gt;Goal&lt;/h3&gt;&#10;&lt;p&gt;Extract and coerce geometry. Created for IFC files.&lt;/p&gt;&#10;&lt;h3&gt;Input&lt;/h3&gt;&#10;&lt;p&gt;IfcSpace entity from IFC.&#10;Reads Body and Box geometries (this can be changed inside the GeometryPartExtractor).&lt;/p&gt;&#10;&lt;p&gt;Parameter: Geometry output. Default fme_composite_surface.&lt;/p&gt;&#10;&lt;h3&gt;Output&lt;/h3&gt;&#10;&lt;p&gt;IfcSpace as extracted geometry.&lt;/p&gt;"
+#!   DOC_EXTENTS="3592.94 446"
+#!   DOC_TOP_LEFT="-1877.12 -223"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="21313"
+#!   FME_DOCUMENT_GUID="f78e71d7-90b8-4201-b65e-94212770d8f5"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2021.0.1.0 (20210404 - Build 21313 - WIN64)"
+#!   LAST_SAVE_DATE="2021-09-16T10:31:02"
+#!   MARKDOWN_DESCRIPTION="#IfcSpace_Coercer&#10;&#10;### Goal&#10;Extract and coerce geometry. Created for IFC files.&#10;&#10;### Input&#10;IfcSpace entity from IFC.&#10;Reads Body and Box geometries (this can be changed inside the GeometryPartExtractor).&#10;&#10;Parameter: Geometry output. Default fme_composite_surface.&#10;&#10;### Output&#10;IfcSpace as extracted geometry."
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY=""
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="IfcSpace_Coercer"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-1900.02 381.254"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE KIND fme_point%fme_line%fme_polygon%fme_composite_surface%fme_mesh%fme_brep_solid%fme_point_cloud%fme_aggregate%fme_multi Geometry Type:"
+#!   DEFAULT_VALUE="fme_composite_surface"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJjaG9pY2VzIjpbeyJkaXNwbGF5IjoiZm1lX3BvaW50IiwidmFsdWUiOiJmbWVfcG9pbnQifSx7ImRpc3BsYXkiOiJmbWVfbGluZSIsInZhbHVlIjoiZm1lX2xpbmUifSx7ImRpc3BsYXkiOiJmbWVfcG9seWdvbiIsInZhbHVlIjoiZm1lX3BvbHlnb24ifSx7ImRpc3BsYXkiOiJmbWVfY29tcG9zaXRlX3N1cmZhY2UiLCJ2YWx1ZSI6ImZtZV9jb21wb3NpdGVfc3VyZmFjZSJ9LHsiZGlzcGxheSI6ImZtZV9tZXNoIiwidmFsdWUiOiJmbWVfbWVzaCJ9LHsiZGlzcGxheSI6ImZtZV9icmVwX3NvbGlkIiwidmFsdWUiOiJmbWVfYnJlcF9zb2xpZCJ9LHsiZGlzcGxheSI6ImZtZV9wb2ludF9jbG91ZCIsInZhbHVlIjoiZm1lX3BvaW50X2Nsb3VkIn0seyJkaXNwbGF5IjoiZm1lX2FnZ3JlZ2F0ZSIsInZhbHVlIjoiZm1lX2FnZ3JlZ2F0ZSJ9LHsiZGlzcGxheSI6ImZtZV9tdWx0aSIsInZhbHVlIjoiZm1lX211bHRpIn1dLCJuYW1lIjoiS0lORCIsInByb21wdCI6Ikdlb21ldHJ5IFR5cGU6IiwicmVxdWlyZWQiOnRydWUsInR5cGUiOiJkcm9wZG93biIsInZhbHVlVHlwZSI6InN0cmluZyJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="KIND" IS_STAND_ALONE="false" />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="11"
+#!   NAME="Coerce Geometry"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1015.9962696669759 222.99980052621811"
+#!   ORDER="500000000000123.13"
+#!   PALETTE_COLOR="Color6"
+#!   BOTTOM_RIGHT="1016.0037303330241 -223.00019947378189"
+#!   BOUNDING_RECT="-1015.9962696669759 222.99980052621811 2032 446"
+#!   STICKY="true"
+#!   COLOUR="0.20000000000000001,0.49803921568627452,0.51764705882352946,1"
+#!   CONTENTS="5 6 4 9 8 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="GeometryPropertyExtractor"
+#!   VERSION="3"
+#!   POSITION="-923.45809984831476 79.414326416009203"
+#!   BOUNDING_RECT="-923.45809984831476 79.414326416009203 565.00106825772946 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19801"
+#! >
+#!     <OUTPUT_FEAT NAME="EXTRACTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="UNMATCHED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="UNTOUCHED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="EXTRACTTYPE_PARAM" PARM_VALUE="Traits"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_NAME_FIELD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GQUERY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GQUERY_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PREFIX_EXTRACTED_TRAITS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="TRAIT_ATTR_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="GeometryPropertyExtractor"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="GeometryPartExtractor"
+#!   VERSION="1"
+#!   POSITION="-213.83152700761002 79.414326416009203"
+#!   BOUNDING_RECT="-213.83152700761002 79.414326416009203 487.00106825772946 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="21313"
+#! >
+#!     <OUTPUT_FEAT NAME="EXTRACTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="REMAINING"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="UNTOUCHED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_PARM PARM_NAME="GQUERY" PARM_VALUE="for&lt;space&gt;&lt;dollar&gt;geom&lt;space&gt;in&lt;space&gt;&lt;solidus&gt;&lt;solidus&gt;geometry&lt;lf&gt;where&lt;space&gt;&lt;dollar&gt;geom&lt;solidus&gt;&lt;at&gt;fme_geometry_name&lt;space&gt;=&lt;space&gt;&lt;apos&gt;Body&lt;apos&gt;&lt;lf&gt;return&lt;space&gt;number&lt;openparen&gt;&lt;dollar&gt;geom&lt;solidus&gt;&lt;at&gt;fme_id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GQUERY_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="GeometryPartExtractor"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="GeometryCoercer"
+#!   VERSION="6"
+#!   POSITION="482.89359969312409 79.414326416009203"
+#!   BOUNDING_RECT="482.89359969312409 79.414326416009203 454 71"
+#!   ORDER="500000000000006"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="21313"
+#! >
+#!     <OUTPUT_FEAT NAME="COERCED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="UNTOUCHED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_PARM PARM_NAME="GQUERY" PARM_VALUE="for&lt;space&gt;&lt;dollar&gt;geom&lt;space&gt;in&lt;space&gt;&lt;solidus&gt;&lt;solidus&gt;geometry&lt;lf&gt;where&lt;space&gt;&lt;dollar&gt;geom&lt;solidus&gt;count&lt;openparen&gt;parent::geometry&lt;closeparen&gt;&lt;space&gt;=&lt;space&gt;0&lt;lf&gt;return&lt;space&gt;number&lt;openparen&gt;&lt;dollar&gt;geom&lt;solidus&gt;&lt;at&gt;fme_id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GQUERY_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="KIND" PARM_VALUE="$(KIND)"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="GeometryCoercer"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="IfcSpace"
+#!   POSITION="-1877.1205998483147 60.914326416009203"
+#!   BOUNDING_RECT="-1877.1205998483147 60.914326416009203 430 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="IfcSpace_Coerced"
+#!   POSITION="1221.7700684578117 51.539232665071694"
+#!   BOUNDING_RECT="1221.7700684578117 51.539232665071694 494.05312499999997 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 EXTRACTED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 EXTRACTED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 COERCED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+# ============================================================================
+DEFAULT_MACRO $(IfcSpace_Coercer_WORKSPACE_NAME)_KIND fme_composite_surface
+# ============================================================================
+# ============================================================================
+USER_PARAMETERS eyJwYXJhbWV0ZXJzIjpbeyJjaG9pY2VzIjpbeyJkaXNwbGF5IjoiZm1lX3BvaW50IiwidmFsdWUiOiJmbWVfcG9pbnQifSx7ImRpc3BsYXkiOiJmbWVfbGluZSIsInZhbHVlIjoiZm1lX2xpbmUifSx7ImRpc3BsYXkiOiJmbWVfcG9seWdvbiIsInZhbHVlIjoiZm1lX3BvbHlnb24ifSx7ImRpc3BsYXkiOiJmbWVfY29tcG9zaXRlX3N1cmZhY2UiLCJ2YWx1ZSI6ImZtZV9jb21wb3NpdGVfc3VyZmFjZSJ9LHsiZGlzcGxheSI6ImZtZV9tZXNoIiwidmFsdWUiOiJmbWVfbWVzaCJ9LHsiZGlzcGxheSI6ImZtZV9icmVwX3NvbGlkIiwidmFsdWUiOiJmbWVfYnJlcF9zb2xpZCJ9LHsiZGlzcGxheSI6ImZtZV9wb2ludF9jbG91ZCIsInZhbHVlIjoiZm1lX3BvaW50X2Nsb3VkIn0seyJkaXNwbGF5IjoiZm1lX2FnZ3JlZ2F0ZSIsInZhbHVlIjoiZm1lX2FnZ3JlZ2F0ZSJ9LHsiZGlzcGxheSI6ImZtZV9tdWx0aSIsInZhbHVlIjoiZm1lX211bHRpIn1dLCJuYW1lIjoiS0lORCIsInByb21wdCI6Ikdlb21ldHJ5IFR5cGU6IiwicmVxdWlyZWQiOnRydWUsInR5cGUiOiJkcm9wZG93biIsInZhbHVlVHlwZSI6InN0cmluZyJ9XX0=
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO IfcSpace_Coercer_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(IfcSpace_Coercer_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(IfcSpace_Coercer_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(IfcSpace_Coercer_WORKSPACE_NAME)_IfcSpace1631781062 Input Splitter"   INPUT FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_IfcSpace"   OUTPUT FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_IfcSpace"
+# -------------------------------------------------------------------------
+DEFAULT_MACRO $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_PARAMETER
+INCLUDE [    if { {Yes} == {Yes} } {       puts {MACRO $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_ACTION ACTION EXTRACT_TRAITS_PREFIXED};    } else {       puts {MACRO $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_ACTION ACTION EXTRACT_TRAITS};    };    if { {EXTRACT_TRAITS} == {EXTRACT_GEOMNAME} } {    } else {       puts {MACRO $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_PARAMETER PARAMETER {  } };    }; ]
+FACTORY_DEF {*} GQueryFactory    FACTORY_NAME { $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_GQuery }    INPUT  FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_IfcSpace"    ROUTE_UNMATCHED_FEATURES YES    $($(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_ACTION)    $($(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_PARAMETER)    OUTPUT { RESULT FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_EXTRACTED"  }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor_Splitter }    INPUT  FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPropertyExtractor_EXTRACTED"    OUTPUT { FEATURE_TYPE $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor___EXTRACTED }    OUTPUT { FEATURE_TYPE $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor___REMAINING }
+FACTORY_DEF {*} GQueryFactory    FACTORY_NAME { $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor_GQuery_Extract }    INPUT { FEATURE_TYPE $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor___EXTRACTED }    GQUERY { "@EvaluateExpression(FDIV,STRING_ENCODED,for<space><dollar>geom<space>in<space><solidus><solidus>geometry<lf>where<space><dollar>geom<solidus><at>fme_geometry_name<space>=<space><apos>Body<apos><lf>return<space>number<openparen><dollar>geom<solidus><at>fme_id<closeparen>,$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor)" }    ACTION EXTRACT_PART    OUTPUT { RESULT FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor_EXTRACTED"  }
+FACTORY_DEF {*} GQueryFactory    FACTORY_NAME { $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor_GQuery_Remove }    INPUT { FEATURE_TYPE $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor___REMAINING }    GQUERY { "@EvaluateExpression(FDIV,STRING_ENCODED,for<space><dollar>geom<space>in<space><solidus><solidus>geometry<lf>where<space><dollar>geom<solidus><at>fme_geometry_name<space>=<space><apos>Body<apos><lf>return<space>number<openparen><dollar>geom<solidus><at>fme_id<closeparen>,$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor)" }    ACTION REMOVE_PART
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} GQueryFactory    FACTORY_NAME { $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryCoercer }    INPUT  FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryPartExtractor_EXTRACTED"    GQUERY { "@EvaluateExpression(FDIV,STRING_ENCODED,for<space><dollar>geom<space>in<space><solidus><solidus>geometry<lf>where<space><dollar>geom<solidus>count<openparen>parent::geometry<closeparen><space>=<space>0<lf>return<space>number<openparen><dollar>geom<solidus><at>fme_id<closeparen>,$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryCoercer)" }    ACTION COERCE_GEOMETRY    PARAMETER { $($(IfcSpace_Coercer_WORKSPACE_NAME)_KIND) BASENAME $(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryCoercer }    OUTPUT { RESULT FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryCoercer_COERCED"  }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(IfcSpace_Coercer_WORKSPACE_NAME)_IfcSpace_Coerced1631781062 Output Collector"   INPUT FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_GeometryCoercer_COERCED"   OUTPUT FEATURE_TYPE "$(IfcSpace_Coercer_WORKSPACE_NAME)_IfcSpace_Coerced"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(IfcSpace_Coercer_WORKSPACE_NAME))}]
